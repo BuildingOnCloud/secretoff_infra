@@ -16,3 +16,5 @@ resource "null_resource" "test" {
     value = "A example resource that does nothing!"
   }
 }
+
+provider "aws" {}
