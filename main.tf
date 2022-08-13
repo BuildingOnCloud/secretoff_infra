@@ -10,11 +10,13 @@ terraform {
   }
 }
 
-# An example resource that does nothing.
-resource "null_resource" "test" {
-  triggers = {
-    value = "A example resource that does nothing!"
+provider "aws" {}
+
+resource "aws_ecr_repository" "foo" {
+  name                 = "bar"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
   }
 }
-
-provider "aws" {}
