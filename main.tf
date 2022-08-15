@@ -1,11 +1,4 @@
 terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "4.26.0"
-    }
-  }
-
   backend "remote" {
     # The name of your Terraform Cloud organization.
     organization = "BuildingOnCloud"
