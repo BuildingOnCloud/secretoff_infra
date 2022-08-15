@@ -10,7 +10,9 @@ terraform {
   }
 }
 
-# Create a VPC
-resource "aws_vpc" "example" {
-  cidr_block = "10.0.0.0/16"
+# An example resource that does nothing.
+resource "null_resource" "example" 
+  triggers = {
+    value = "A example resource that does nothing!"
+  }
 }
