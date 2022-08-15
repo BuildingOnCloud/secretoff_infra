@@ -16,3 +16,7 @@ resource "null_resource" "example" {
     value = "A example resource that does nothing!"
   }
 }
+
+variable "AWS_SECRET_ACCESS_KEY" {
+  type = string
+}
