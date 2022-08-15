@@ -51,9 +51,6 @@ on:
     - "secretoff"
   pull_request:
 
-env:
-  AWS_REGION: ${{ env.AWS_REGION }}
-
 permissions:
   contents: read
 
