@@ -26,4 +26,3 @@ resource "aws_ecr_repository" "secretoff_registry" {
     scan_on_push = true
   }
 }
-
