@@ -21,7 +21,6 @@ variable "AWS_SECRET_ACCESS_KEY" {
 resource "aws_ecr_repository" "secretoff_registry" {
   name                 = "app_registry1"
   image_tag_mutability = "MUTABLE"
-  
   image_scanning_configuration {
     scan_on_push = true
   }
