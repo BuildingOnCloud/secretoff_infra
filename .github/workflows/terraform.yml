@@ -48,7 +48,6 @@ on:
   push:
     branches:
     - "main"
-    - "secretoff"
   pull_request:
 
 permissions:
