@@ -8,6 +8,11 @@ terraform {
   }
 }
 
+provider "aws" {
+  # Configuration options
+}
+
+
 variable "AWS_SECRET_ACCESS_KEY" {
   type = string
 }
