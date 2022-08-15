@@ -84,7 +84,7 @@ jobs:
       run: terraform fmt -check -diff
 
     # Generates an execution plan for Terraform
-    - name: Terraform Plaecrets.AWS_REGION }} 
+    - name: Terraform Plan
       run: terraform plan -input=false
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
