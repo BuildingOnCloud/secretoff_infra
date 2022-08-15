@@ -20,8 +20,7 @@ variable "AWS_SECRET_ACCESS_KEY" {
 
 # Docker Registry
 resource "aws_ecr_repository" "secretoff_registry" {
-  name                 = "app_registry1"
-  image_tag_mutability = "MUTABLE"
+  name = "app_registry1"
 
   image_scanning_configuration {
     scan_on_push = true
