@@ -34,7 +34,6 @@ resource "aws_ecs_service" "secretoff_service" {
   }
   network_configuration {
     subnets          = aws_subnet.private.*.id
-    security_groups  = aws_security_group.lb.id
     assign_public_ip = true
   }
   deployment_circuit_breaker {
