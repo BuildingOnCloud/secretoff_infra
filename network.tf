@@ -1,6 +1,8 @@
 # Default vpc
 resource "aws_vpc" "secret_off_vpc" {
-  name       = "secret_off_vpc1"
+  tags = {
+    name = "secret_off_vpc1"
+  }
   cidr_block = "10.32.0.0/16"
 }
 
