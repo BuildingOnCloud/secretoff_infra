@@ -13,7 +13,7 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_subnet" "private" {
-  count             = 2
-  cidr_block        = cidrsubnet(aws_vpc.secret_off_vpc.cidr_block, 8, count.index)
-  vpc_id            = aws_vpc.secret_off_vpc.id
+  count      = 2
+  cidr_block = cidrsubnet(aws_vpc.secret_off_vpc.cidr_block, 8, count.index)
+  vpc_id     = aws_vpc.secret_off_vpc.id
 }
