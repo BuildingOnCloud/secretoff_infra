@@ -4,8 +4,8 @@ resource "aws_secretsmanager_secret" "secretoff_secret1" {
 }
  
 resource "aws_secretsmanager_secret_version" "secretversion1" {
-  secret_id     = aws_secretsmanager_secret.secretoff_secret1.id
-  secret_string = "8080"
+   secret_id     = aws_secretsmanager_secret.secretoff_secret1.id
+   secret_string = "8080"
 }
 
 # Secret 2
@@ -14,6 +14,6 @@ resource "aws_secretsmanager_secret" "secretoff_secret2" {
 }
  
 resource "aws_secretsmanager_secret_version" "secretversion2" {
-  secret_id     = aws_secretsmanager_secret.secretoff_secret2.id
-  secret_string = "Secret Off"
+   secret_id     = aws_secretsmanager_secret.secretoff_secret2.id
+   secret_string = "Secret Off"
 }
