@@ -85,8 +85,8 @@ resource "aws_route_table_association" "private" {
 
 # Security Group
 resource "aws_security_group" "lb" {
-  name        = "secretoff-alb-security-group"
-  vpc_id      = aws_vpc.secret_off_vpc.id
+  name   = "secretoff-alb-security-group"
+  vpc_id = aws_vpc.secret_off_vpc.id
 
   ingress {
     protocol    = "tcp"
@@ -96,9 +96,9 @@ resource "aws_security_group" "lb" {
   }
 
   egress {
-    from_port = 0
-    to_port   = 0
-    protocol  = "-1"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
