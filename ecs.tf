@@ -38,7 +38,7 @@ resource "aws_ecs_service" "secretoff_service" {
     assign_public_ip = true
   }
   deployment_circuit_breaker {
-    enable = true
+    enable   = true
     rollback = false
   }
 }
