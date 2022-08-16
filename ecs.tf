@@ -4,7 +4,7 @@ resource "aws_ecs_task_definition" "service_secretoff" {
   network_mode             = "awsvpc"
   cpu                      = 1024
   memory                   = 2048
-  execution_role_arn       = "arn:aws:iam::224270744698:role/ecsTaskExecutionRole
+  execution_role_arn       = "arn:aws:iam::224270744698:role/ecsTaskExecutionRole"
   container_definitions = jsonencode([
     {
       name      = "app_ecs-service1"
