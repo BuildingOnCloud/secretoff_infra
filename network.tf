@@ -129,7 +129,7 @@ resource "aws_lb_target_group" "secretoff_target_security_group" {
   }
 }
 
-resource "aws_lb_listener" "hello_world" {
+resource "aws_lb_listener" "secretoff_lb_listener" {
   load_balancer_arn = aws_lb.secretoff_lb.id
   port              = "80"
   protocol          = "HTTP"
