@@ -82,3 +82,61 @@ resource "aws_route_table_association" "private" {
   subnet_id      = element(aws_subnet.private.*.id, count.index)
   route_table_id = element(aws_route_table.private.*.id, count.index)
 }
+
+# Security Group
+resource "aws_security_group" "lb" {
+  name        = "secretoff-alb-security-group"
+  vpc_id      = aws_vpc.secret_off_vpc.id
+
+  ingress {
+    protocol    = "tcp"
+    from_port   = 80
+    to_port     = 80
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags = {
+    name = "secret_off"
+  }
+}
+
+## LB
+resource "aws_lb" "secretoff_lb" {
+  name            = "secretoff-lb"
+  subnets         = aws_subnet.public.*.id
+  security_groups = [aws_security_group.lb.id]
+  tags = {
+    name = "secret_off"
+  }
+}
+
+resource "aws_lb_target_group" "secretoff_target_security_group" {
+  name        = "secretoff-target-group"
+  port        = 80
+  protocol    = "HTTP"
+  vpc_id      = aws_vpc.secret_off_vpc.id
+  target_type = "ip"
+  tags = {
+    name = "secret_off"
+  }
+}
+
+resource "aws_lb_listener" "hello_world" {
+  load_balancer_arn = aws_lb.secretoff_lb.id
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    target_group_arn = aws_lb_target_group.secretoff_target_security_group.id
+    type             = "forward"
+  }
+  tags = {
+    name = "secret_off"
+  }
+}
