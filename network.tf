@@ -8,7 +8,7 @@ resource "aws_vpc" "secret_off_vpc" {
 
 # Public Subnet
 resource "aws_subnet" "public" {
-  count                   = 2
+  count                   = 1
   cidr_block              = cidrsubnet(aws_vpc.secret_off_vpc.cidr_block, 8, 2 + count.index)
   vpc_id                  = aws_vpc.secret_off_vpc.id
   map_public_ip_on_launch = true
@@ -19,7 +19,7 @@ resource "aws_subnet" "public" {
 
 # Private Subnet
 resource "aws_subnet" "private" {
-  count      = 2
+  count      = 1
   cidr_block = cidrsubnet(aws_vpc.secret_off_vpc.cidr_block, 8, count.index)
   vpc_id     = aws_vpc.secret_off_vpc.id
   tags = {
