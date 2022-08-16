@@ -1,5 +1,5 @@
 resource "aws_ecs_task_definition" "service_secretoff" {
-  family                = "service"
+  family = "service"
   container_definitions = jsonencode([
     {
       name      = "app_ecs-service1"
