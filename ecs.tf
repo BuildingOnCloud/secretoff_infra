@@ -21,3 +21,26 @@ resource "aws_ecs_task_definition" "service_secretoff" {
     }
   ])
 }
+
+resource "aws_ecs_service" "secretoff_service" {
+  name            = "app_ecs-service1"
+  cluster         = aws_ecs_cluster.secretoff_cluster.id
+  task_definition = aws_ecs_task_definition.service_secretoff.arn
+  desired_count   = 2
+  deployment_circuit_breaker {
+    enable = true
+  }
+  load_balancer {
+    target_group_arn = aws_lb_target_group.secretoff_target_security_group.arn
+    container_name   = "app_container1"
+    container_port   = 8080
+  }
+  network_configuration {
+    subnets          = aws_subnet.private.*.id
+    security_groups  = aws_security_group.lb.id
+    assign_public_ip = true
+  }
+  deployment_circuit_breaker {
+    enable = true
+  }
+}
