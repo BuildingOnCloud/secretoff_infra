@@ -1,6 +1,9 @@
 resource "aws_ecs_task_definition" "service_secretoff" {
-  family = "service"
-  name   = "task_def1"
+  family                   = "task_def1"
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
+  cpu                      = 1024
+  memory                   = 2048
   container_definitions = jsonencode([
     {
       name      = "app_ecs-service1"
